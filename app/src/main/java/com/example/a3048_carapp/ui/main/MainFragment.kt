@@ -1,6 +1,7 @@
 package com.example.a3048_carapp.ui.main
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import android.widget.AutoCompleteTextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.a3048_carapp.MapsActivity
 import kotlinx.android.synthetic.main.main_fragment.*
 import com.example.a3048_carapp.R
 
@@ -39,6 +41,11 @@ class MainFragment : Fragment() {
         })
 
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
+        btnMap.setOnClickListener {
+            val intent = Intent(context, MapsActivity::class.java)
+            startActivity(intent)
+        }
         /*
         viewModel.cars.observe(this, Observer {
             cars -> actCarBrand.setAdapter(ArrayAdapter(context!!, R.layout.support_simple_spinner_dropdown_item, cars))

@@ -2,4 +2,5 @@
     <string name="app_name">3048-CarApp</string>
     <string name="actBrand">Make</string>
     <string name="actModel">Model</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
