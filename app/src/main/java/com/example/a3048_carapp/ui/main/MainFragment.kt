@@ -14,7 +14,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.FileProvider
@@ -22,11 +21,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.a3048_carapp.MapsActivity
-import kotlinx.android.synthetic.main.main_fragment.*
 import com.example.a3048_carapp.R
 import com.example.a3048_carapp.dto.Photo
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import kotlinx.android.synthetic.main.main_fragment.*
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -70,6 +69,10 @@ class MainFragment : Fragment() {
 
         btnMap.setOnClickListener {
             val intent = Intent(context, MapsActivity::class.java)
+            startActivity(intent)
+        }
+        btn_camera.setOnClickListener{
+            val intent = Intent(context, Photo::class.java)
             startActivity(intent)
         }
         /*

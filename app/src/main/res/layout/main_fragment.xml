@@ -44,4 +44,17 @@
         app:layout_constraintVertical_bias="0.074"
         tools:ignore="MissingConstraints" />
 
+    <Button
+        android:id="@+id/btn_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:text="Camera"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.631"
+        app:layout_constraintStart_toEndOf="@+id/btnMap"
+        app:layout_constraintTop_toBottomOf="@+id/actCarModel"
+        app:layout_constraintVertical_bias="0.073" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
