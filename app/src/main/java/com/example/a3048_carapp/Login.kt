@@ -36,7 +36,8 @@ class Login : AppCompatActivity() {
                                 Toast.LENGTH_SHORT
                         ).show()
                     }
-                    else -> {
+                    else ->
+                    {
                         val email: String = et_login_email.text.toString().trim { it <= ' '}
                         val password: String = et_login_password.text.toString().trim { it <= ' '}
 
@@ -70,22 +71,9 @@ class Login : AppCompatActivity() {
                                                 ).show()
                                             }
                                         }
-
-
-
-
                     }
-
-
-                }            }
-
-
-
-
-
-
-
-
+                }
+            }
         }
     }
 }
