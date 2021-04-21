@@ -1,12 +1,14 @@
 package com.example.a3048_carapp
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import androidx.core.view.GestureDetectorCompat
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.a3048_carapp.ui.main.MainFragment
 import com.example.a3048_carapp.ui.main.MainViewModel
+import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,6 +27,16 @@ class MainActivity : AppCompatActivity() {
                     .commitNow()
 
             activeFragment = mainFragment
+
+            btn_logout.setOnClickListener{
+                FirebaseAuth.getInstance().signOut()
+
+                startActivity(Intent(this@MainActivity, Login::class.java))
+                finish()
+
+
+            }
+
         }
     }
 }
