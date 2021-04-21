@@ -14,11 +14,12 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        tv_register.setOnClickListener{
+
+        tv_register.setOnClickListener {
 
             startActivity(Intent(this@Login, Register::class.java))
 
-
+                     }
             btnLogin.setOnClickListener{
                 when {
                     TextUtils.isEmpty(et_login_email.text.toString().trim { it <= ' '}) -> {
@@ -77,4 +78,3 @@ class Login : AppCompatActivity() {
             }
         }
     }
-}
