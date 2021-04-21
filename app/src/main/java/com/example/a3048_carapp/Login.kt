@@ -6,7 +6,6 @@ import android.text.TextUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
 
@@ -20,7 +19,7 @@ class Login : AppCompatActivity() {
             startActivity(Intent(this@Login, Register::class.java))
 
 
-            btn_login.setOnClickListener{
+            btnLogin.setOnClickListener{
                 when {
                     TextUtils.isEmpty(et_login_email.text.toString().trim { it <= ' '}) -> {
                         Toast.makeText(
@@ -44,7 +43,7 @@ class Login : AppCompatActivity() {
                                 .addOnCompleteListener { task ->
 
                                             if (task.isSuccessful) {
-                                                val firebaseUser: FirebaseUser = task.result!!.user!!
+
 
                                                 Toast.makeText(
                                                         this@Login,
@@ -54,8 +53,10 @@ class Login : AppCompatActivity() {
 
                                                 val intent =
                                                         Intent(this@Login, MainActivity::class.java)
-                                                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                                intent.putExtra( "user_id",
+                                                intent.flags =
+                                                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                                intent.putExtra(
+                                                        "user_id",
                                                         FirebaseAuth.getInstance().currentUser!!.uid
                                                 )
                                                 intent.putExtra("email_id" , email)
