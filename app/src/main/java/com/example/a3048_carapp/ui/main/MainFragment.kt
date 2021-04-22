@@ -1,4 +1,4 @@
-package com.example.a3048_carapp.ui.main
+ package com.example.a3048_carapp.ui.main
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -15,6 +15,7 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -25,6 +26,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.a3048_carapp.MapsActivity
 import com.example.a3048_carapp.R
+import com.example.a3048_carapp.dto.Car
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.main_fragment.*
@@ -45,6 +47,7 @@ class MainFragment : Fragment() {
     private lateinit var currentPhotoPath: String
     private var photoURI : Uri? = null
     private var user : FirebaseUser? = null
+    var selectedCar: Car = Car("", "")
 
     companion object {
         fun newInstance() = MainFragment()
@@ -65,6 +68,19 @@ class MainFragment : Fragment() {
         applicationViewModel.carService.getLocalCarDAO().getAllCars().observe(this, Observer {
             cars -> actCarBrand.setAdapter(ArrayAdapter(context!!, R.layout.support_simple_spinner_dropdown_item, cars))
         })
+
+        actCarBrand.setOnItemClickListener { parent, view, position, id ->
+            selectedCar = parent.getItemAtPosition(position) as Car
+        }
+        actCarBrand.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                selectedCar = Car("", "")
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                selectedCar = parent!!.getItemAtPosition(position) as Car
+            }
+        }
 
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
